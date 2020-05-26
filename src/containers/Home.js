@@ -84,7 +84,7 @@ export default function Home() {
           <Form inline onSubmit={handleSearch}>
             <FormControl type="text"
               style={{ width: '300px' }}
-              placeholder="Nashville, Tennesse"
+              placeholder="Nashville Tennesse"
               className="mr-sm-2"
               value={search}
               onChange={e => setSearch(e.target.value)}
