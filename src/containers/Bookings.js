@@ -90,7 +90,7 @@ export default function Bookings() {
             <td>{bookedDate.propertyTitle}</td>
             <td>{bookedDate.startBookingDate}</td>
             <td>{bookedDate.endBookingDate}</td>  
-            <td><Link to={`/properties/${bookedDate.propertyId}`} style={{color: 'blue'}}>View</Link></td>  
+            <td><Link to={`/properties/${bookedDate.propertyId}`} style={{color: 'blue'}}>View Property</Link></td>  
             <td className="actions">
               <Button variant="danger" onClick={e => handleDelete(bookedDate.propertyId, bookedDate.startBookingDate)}><FaTrashAlt /></Button>
             </td>
