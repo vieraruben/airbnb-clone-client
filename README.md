@@ -16,7 +16,7 @@ Owner can add new properties <br />
 User authentication, login, logout, reset password, forgot password <br />
 
 
-### How to user
+### How to use this project
 
 Download and run commands <br />
  1 - npm install <br />
