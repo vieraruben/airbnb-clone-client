@@ -4,7 +4,7 @@ To open the backend implementation go to: [https://github.com/vieraruben/airbnb-
 
 ## Demo
 
-To open the backend implementation go to: [https://master.d2nhhpue3pv3dc.amplifyapp.com/](https://master.d2nhhpue3pv3dc.amplifyapp.com/)
+[https://master.d2nhhpue3pv3dc.amplifyapp.com/](https://master.d2nhhpue3pv3dc.amplifyapp.com/)
 
 ### Use cases
 
