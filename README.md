@@ -19,6 +19,12 @@ Owner can add new properties <br />
 
 User authentication, login, signup, logout, change password, forgot password <br />
 
+### Technologies
+
+React <br />
+React Context <br />
+AWS Amplify <br />
+React Boostrap <br />
 
 ### How to use this project
 
