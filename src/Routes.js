@@ -9,6 +9,8 @@ import Login from "./containers/Login";
 import Signup from "./containers/Signup";
 import Bookings from "./containers/Bookings";
 import Properties from "./containers/Properties";
+import ChangePassword from "./containers/ChangePassword";
+import ResetPassword from "./containers/ResetPassword";
 import Property from "./containers/Property";
 import NotFound from "./containers/NotFound";
 
@@ -30,6 +32,12 @@ export default function Routes() {
       <AuthenticatedRoute exact path="/properties">
         <Properties />
       </AuthenticatedRoute>
+      <AuthenticatedRoute exact path="/settings/password">
+        <ChangePassword />
+      </AuthenticatedRoute>
+      <UnauthenticatedRoute exact path="/login/reset">
+        <ResetPassword />
+      </UnauthenticatedRoute>
       <AuthenticatedRoute exact path="/properties/:id">
         <Property />
       </AuthenticatedRoute>

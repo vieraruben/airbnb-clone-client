@@ -62,6 +62,9 @@ function App() {
                   <Link to="/properties">Properties</Link>
                 </Nav.Item>
                 <Nav.Item>
+                  <Link to="/settings/password">Settings</Link>
+                </Nav.Item>
+                <Nav.Item>
                   <Link to="/" onClick={handleLogout}>Logout</Link>
                 </Nav.Item>
               </Nav>

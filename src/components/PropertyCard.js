@@ -15,7 +15,7 @@ import { FaBeer, FaTrashAlt } from 'react-icons/fa';
 
 import Carousel from 'react-bootstrap/Carousel'
 
-export default function PropertyCard({ id, title, price, pictureUrl, owner = false }) {
+export default function PropertyCard({ id, title, price, pictureUrl, setSuccessMessage, loadProperties, owner = false }) {
   const history = useHistory();
 
   function deleteProperty() {
@@ -35,10 +35,15 @@ export default function PropertyCard({ id, title, price, pictureUrl, owner = fal
 
     try {
       await deleteProperty();
-      history.push("/");
+
+      setSuccessMessage({
+        type: 'info',
+        text: `Property ${title} removed successfully!`
+      })
+      await loadProperties()
+      history.push("/properties");
     } catch (e) {
       onError(e);
-      // setIsDeleting(false);
     }
   }
 
@@ -47,10 +52,18 @@ export default function PropertyCard({ id, title, price, pictureUrl, owner = fal
       <Card.Img variant="top" src={pictureUrl} />
       <Card.Body>
         <Card.Title>{title}</Card.Title>
-        <Card.Text>
-          <Badge variant="secondary">${price}</Badge>
-          {owner && <Button variant="danger" style={{marginLeft: '30%'}} onClick={handleDelete}><FaTrashAlt /></Button>}
-        </Card.Text>
+        <Container>
+          <Row>
+            <Col>
+              <Card.Text>
+                <Badge variant="secondary">${price}</Badge>
+              </Card.Text>
+            </Col>
+            <Col>
+              {owner && <Button variant="danger" style={{ marginLeft: '30%' }} onClick={handleDelete}><FaTrashAlt /></Button>}
+            </Col>
+          </Row>
+        </Container>
       </Card.Body>
     </Link>
   </Card>

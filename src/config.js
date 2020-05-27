@@ -1,7 +1,7 @@
 const dev = {
   s3: {
     REGION: "us-east-2",
-    BUCKET: "airbnb-clone-api-dev-attachmentsbucket-12fkuz1f25onv" //"airbnb-clone-attachment-bucket"
+    BUCKET: "airbnb-clone-api-dev-attachmentsbucket-12fkuz1f25onv"
   },
   apiGateway: {
     REGION: "us-east-2",

@@ -6,6 +6,7 @@ import LoaderButton from "../components/LoaderButton";
 import { useAppContext } from "../libs/contextLib";
 import { useFormFields } from "../libs/hooksLib";
 import { onError } from "../libs/errorLib";
+import { Link } from "react-router-dom";
 import "./Login.css";
 
 import Form from 'react-bootstrap/Form'
@@ -56,13 +57,14 @@ export default function Login() {
             onChange={handleFieldChange}
           />
         </FormGroup>
+        <Link to="/login/reset">Forgot password?</Link>
         <LoaderButton
           block
           type="submit"
           isLoading={isLoading}
           disabled={!validateForm()}
         >
-           Login
+          Login
         </LoaderButton>
       </form>
     </div>

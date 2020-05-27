@@ -46,12 +46,6 @@ export default function Home() {
       if (!isAuthenticated) {
         return;
       }
-
-      // try {
-      // } catch (e) {
-      //   onError(e);
-      // }
-
       setIsLoading(false);
     }
 
@@ -64,14 +58,18 @@ export default function Home() {
 
   async function handleSearch(e) {
     e.preventDefault();
-    if(!search)
+    if (!search) {
+      setShow(true)
+      setNoFound(true)
       return
+    }
+
     setShow(false)
     setNoFound(false)
     const params = search.split(" ").join("_").toLowerCase();
     const result = await searchProperties(params);
     setProperties(result.body)
-    if(result.body.length === 0){
+    if (result.body.length === 0) {
       setShow(true)
       setNoFound(true)
     }
@@ -103,16 +101,16 @@ export default function Home() {
         </Col>
       </Row>}
 
-    <Row className="justify-content-md-center">
-      {properties.map((property, index) => <Col key={index}>
-        <PropertyCard
-          id={property.propertyId}
-          title={property.title}
-          price={property.price}
-          pictureUrl={property.pictureUrl}
-        />
-      </Col>)}
-    </Row>
+      <Row className="justify-content-md-center">
+        {properties.map((property, index) => <Col key={index}>
+          <PropertyCard
+            id={property.propertyId}
+            title={property.title}
+            price={property.price}
+            pictureUrl={property.pictureUrl}
+          />
+        </Col>)}
+      </Row>
     </Container >
   );
 }

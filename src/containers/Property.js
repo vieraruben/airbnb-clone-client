@@ -5,45 +5,28 @@ import { onError } from "../libs/errorLib";
 import { FormGroup, FormControl } from "react-bootstrap";
 import config from "../config";
 import { s3Upload } from "../libs/awsLib";
-
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-
 import { FaBeer, FaTrashAlt, FaPlusCircle } from 'react-icons/fa';
 import { Button, Glyphicon } from "react-bootstrap";
-
-import Form from 'react-bootstrap/Form'
-import NavDropdown from 'react-bootstrap/NavDropdown'
-
-import Carousel from 'react-bootstrap/Carousel'
-
 import Table from 'react-bootstrap/Table'
 import Image from 'react-bootstrap/Image'
-
 import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
 import Spinner from 'react-bootstrap/Spinner'
 
-
-import Modal from 'react-bootstrap/Modal'
-import PropertyCard from "../components/PropertyCard";
+import './Property.css'
 
 export default function Property() {
   const history = useHistory();
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
-
   const [show, setShow] = useState(false);
-
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
   const [properties, setProperties] = useState([]);
   const [bookedDates, setBookedDates] = useState([]);
 
@@ -92,7 +75,6 @@ export default function Property() {
   }
 
   async function handleSubmit(e) {
-    e.preventDefault()
     try {
       setIsLoading(true)
       const result = await bookProperty({
@@ -115,48 +97,52 @@ export default function Property() {
 
   return (
     <Container className="Property">
-
-      <Row className="justify-content-md-center">
-        <Col md="auto" style={{ textAlign: 'center' }}>
-          {property.pictureUrl && <Image style={{ width: '350px' }}
-            src={property.pictureUrl}
-            alt="First slide"
-            rounded
-          />}
-          <h5>Title: {property.title}</h5>
-          <h5>Country: {property.country}</h5>
-          <h5>City: {property.city}</h5>
-          <h5>Price: {property.price}</h5>
-        </Col>
-      </Row>
-      <br />
-      <Row className="justify-content-md-center">
-        <Col md="auto">
-          <Form inline>
+      <form className="booking_form" style={{ textAlign: 'center' }} onSubmit={handleSubmit}>
+        <Row className="justify-content-md-center">
+          <Col xs={12}>
+            {!property.pictureUrl && <Spinner
+              as="span"
+              animation="border"
+              size="sm"
+              role="status"
+              aria-hidden="true"
+            />}
+            {property.pictureUrl && <Image style={{ width: '350px' }}
+              src={property.pictureUrl}
+              alt="First slide"
+              rounded
+            />}
+          </Col>
+          <Col sm={12}>
+            <h5>Title: {property.title}</h5>
+            <h5>Country: {property.country}</h5>
+            <h5>City: {property.city}</h5>
+            <h5>Price: {property.price}</h5>
+          </Col>
+          <Col sm={12}>
             <DatePicker
               selected={startDate}
               onChange={date => setStartDate(date)}
             />
-            <span style={{ margin: '0.5em' }}></span>
             <DatePicker
               selected={endDate}
               onChange={date => setEndDate(date)}
             />
-          </Form>
-        </Col>
-      </Row>
-      <br />
-      <Row className="justify-content-md-center">
-        <Col md="auto">
-          <Button variant="outline-success" onClick={handleSubmit}>{isLoading && <Spinner
-            as="span"
-            animation="border"
-            size="sm"
-            role="status"
-            aria-hidden="true"
-          />}BOOK</Button>
-        </Col>
-      </Row>
+          </Col>
+        </Row>
+        <br />
+        <Row className="justify-content-md-center">
+          <Col md="auto">
+            <Button variant="outline-success" type="submit">{isLoading && <Spinner
+              as="span"
+              animation="border"
+              size="sm"
+              role="status"
+              aria-hidden="true"
+            />}BOOK</Button>
+          </Col>
+        </Row>
+      </form>
       <br />
       <h2 style={{ textAlign: 'center' }}>Booked Dates</h2>
       <hr />

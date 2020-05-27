@@ -6,7 +6,6 @@ export function initSentry() {
   if (isLocal) {
     return;
   }
-
   Sentry.init({ dsn: "https://5f83aa2e21064e47bab8a1f308f940eb@sentry.io/5185720" });
 }
 

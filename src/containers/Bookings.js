@@ -19,9 +19,6 @@ export default function Bookings() {
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
   const [bookedDates, setBookedDates] = useState([]);
-
-  
-
   const [show, setShow] = useState(false);
 
   function loadBookedDates() {
@@ -33,11 +30,6 @@ export default function Bookings() {
       try {
         const bookedDates = await loadBookedDates();
         setBookedDates(bookedDates.body)
-        // console.log('bookedDates ' + JSON.stringify(bookedDates))
-        // const { content, attachment } = properties;
-        // if (attachment) {
-        //   property.attachmentURL = await Storage.vault.get(attachment);
-        // }
       } catch (e) {
         onError(e);
       }
@@ -85,6 +77,7 @@ export default function Bookings() {
             <th>Property</th>
             <th>Start Date</th>
             <th>End Date</th>
+            <th></th>
             <th className="actions">
               <Button variant="success" onClick={() => handleNewBooking()}>
                 <FaPlusCircle />
@@ -94,15 +87,15 @@ export default function Bookings() {
         </thead>
         <tbody>
           {bookedDates.map((bookedDate, index) => <tr key={index}>
-            <td><Link to={`/properties/${bookedDate.propertyId}`}>{bookedDate.propertyTitle}</Link></td>
+            <td>{bookedDate.propertyTitle}</td>
             <td>{bookedDate.startBookingDate}</td>
             <td>{bookedDate.endBookingDate}</td>  
+            <td><Link to={`/properties/${bookedDate.propertyId}`} style={{color: 'blue'}}>View</Link></td>  
             <td className="actions">
               <Button variant="danger" onClick={e => handleDelete(bookedDate.propertyId, bookedDate.startBookingDate)}><FaTrashAlt /></Button>
             </td>
             </tr>
             )}
-          
         </tbody>
       </Table>
     </Container>
