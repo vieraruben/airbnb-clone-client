@@ -115,8 +115,8 @@ export default function Property() {
           </Col>
           <Col sm={12}>
             <h5>Title: {property.title}</h5>
-            <h5>Country: {property.country}</h5>
             <h5>City: {property.city}</h5>
+            <h5>Country: {property.country}</h5>
             <h5>Price: {property.price}</h5>
           </Col>
           <Col sm={12}>

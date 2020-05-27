@@ -156,16 +156,6 @@ export default function Properties() {
                     required
                   />
                 </Form.Group>
-                <Form.Group controlId="country">
-                  <Form.Label>Country</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Country"
-                    value={property.country}
-                    onChange={e => setProperty({ ...property, country: e.target.value })}
-                    required
-                  />
-                </Form.Group>
                 <Form.Group controlId="city">
                   <Form.Label>City</Form.Label>
                   <Form.Control
@@ -173,6 +163,16 @@ export default function Properties() {
                     placeholder="City"
                     value={property.city}
                     onChange={e => setProperty({ ...property, city: e.target.value })}
+                    required
+                  />
+                </Form.Group>
+                <Form.Group controlId="country">
+                  <Form.Label>Country</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Country"
+                    value={property.country}
+                    onChange={e => setProperty({ ...property, country: e.target.value })}
                     required
                   />
                 </Form.Group>

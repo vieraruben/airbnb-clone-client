@@ -66,7 +66,7 @@ export default function Home() {
 
     setShow(false)
     setNoFound(false)
-    const params = search.split(" ").join("_").toLowerCase();
+    const params = search.split(" ").reverse().join("_").toLowerCase();
     const result = await searchProperties(params);
     setProperties(result.body)
     if (result.body.length === 0) {
