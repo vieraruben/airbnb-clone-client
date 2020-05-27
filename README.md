@@ -1,23 +1,23 @@
 ## Airbnb-Clone-Client
 
-To open the backend implementation of this project go to: [https://github.com/vieraruben/airbnb-clone-api](https://github.com/vieraruben/airbnb-clone-api)
+To open the backend implementation go to: [https://github.com/vieraruben/airbnb-clone-api](https://github.com/vieraruben/airbnb-clone-api)
 
 ### Use cases
 
-Search by location
-Get information of one property
-Get all the unavailable dates for the property
-Book a property for particular dates
-List all your bookings
-Owner can list and remove their propertyies
-Remove your bookings
-Owner can add new properties
+Search by location <br />
+Get information of one property <br />
+Get all the unavailable dates for the property <br />
+Book a property for particular dates <br />
+List all your bookings <br />
+Owner can list and remove their propertyies <br />
+Remove your bookings <br />
+Owner can add new properties <br />
 
-User authentication, login, logout, reset password, forgot password
+User authentication, login, logout, reset password, forgot password <br />
 
 
 ### How to user
 
-Download and run commands
- 1 - npm install
+Download and run commands <br />
+ 1 - npm install <br />
  2 - npm start
