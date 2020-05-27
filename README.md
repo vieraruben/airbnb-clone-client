@@ -2,6 +2,10 @@
 
 To open the backend implementation go to: [https://github.com/vieraruben/airbnb-clone-api](https://github.com/vieraruben/airbnb-clone-api)
 
+## Demo
+
+To open the backend implementation go to: [https://master.d2nhhpue3pv3dc.amplifyapp.com/](https://master.d2nhhpue3pv3dc.amplifyapp.com/)
+
 ### Use cases
 
 Search by location <br />
@@ -13,7 +17,7 @@ Owner can list and remove their properties <br />
 Remove your bookings <br />
 Owner can add new properties <br />
 
-User authentication, login, logout, reset password, forgot password <br />
+User authentication, login, signup, logout, change password, forgot password <br />
 
 
 ### How to use this project
