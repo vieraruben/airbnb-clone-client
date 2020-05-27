@@ -75,6 +75,7 @@ export default function Property() {
   }
 
   async function handleSubmit(e) {
+    e.preventDefault()
     try {
       setIsLoading(true)
       const result = await bookProperty({
