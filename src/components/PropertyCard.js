@@ -49,7 +49,7 @@ export default function PropertyCard({ id, title, price, pictureUrl, setSuccessM
 
   return <Card style={{ width: '11rem' }} className="PropertyCard">
     <Link to={`/properties/${id}`}>
-      <Card.Img variant="top" src={pictureUrl} />
+      <Card.Img variant="top" src={pictureUrl} style={{height: '150px'}}/>
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Container>
