@@ -43,24 +43,16 @@ export default function Property() {
   }
 
   useEffect(() => {
-    function loadOwnerProperties() {
+    function loadProperty() {
       return API.get("api", `/properties?propertyId=${id}`);
     }
 
     async function onLoad() {
       try {
-        const poperty = await loadOwnerProperties();
+        const poperty = await loadProperty();
         const bookedDates = await loadBookedDates();
-
         setProperty(poperty.body[0])
         setBookedDates(bookedDates.body)
-        console.log('properties ' + JSON.stringify(poperty.body[0]))
-        console.log('bookedDates ' + JSON.stringify(bookedDates))
-        // const { content, attachment } = properties;
-
-        // if (attachment) {
-        //   property.attachmentURL = await Storage.vault.get(attachment);
-        // }
       } catch (e) {
         onError(e);
       }
