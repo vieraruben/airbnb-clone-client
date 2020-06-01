@@ -38,20 +38,20 @@ export default function Property() {
     price: 0
   });
 
-  function loadBookedDates() {
+  function loadBookedDates(id) {
     return API.get("api", `/propertyDates?propertyId=${id}`);
   }
 
   useEffect(() => {
-    function loadProperty() {
-      return API.get("api", `/properties?propertyId=${id}`);
+    function loadProperty(id) {
+      return API.get("api", `/property?propertyId=${id}`);
     }
 
     async function onLoad() {
       try {
-        const poperty = await loadProperty();
+        const poperty = await loadProperty(id);
         const bookedDates = await loadBookedDates();
-        setProperty(poperty.body[0])
+        setProperty(poperty.body)
         setBookedDates(bookedDates.body)
       } catch (e) {
         onError(e);
@@ -88,79 +88,78 @@ export default function Property() {
     return new Date(date)
   }
 
-  return (
-    <Container className="Property">
-      <form className="booking_form" style={{ textAlign: 'center' }} onSubmit={handleSubmit}>
-        <Row className="justify-content-md-center">
-          <Col xs={12}>
-            {!property.pictureUrl && <Spinner
-              as="span"
-              animation="border"
-              size="sm"
-              role="status"
-              aria-hidden="true"
-            />}
-            {property.pictureUrl && <Image style={{ width: '350px' }}
-              src={property.pictureUrl}
-              alt="First slide"
-              rounded
-            />}
-          </Col>
-          <Col sm={12}>
-            <h5>Title: {property.title}</h5>
-            <h5>City: {property.city}</h5>
-            <h5>Country: {property.country}</h5>
-            <h5>Price: {property.price}</h5>
-          </Col>
-          <Col sm={12}>
-            <DatePicker
-              selected={startDate}
-              onChange={date => setStartDate(date)}
-            />
-            <DatePicker
-              selected={endDate}
-              onChange={date => setEndDate(date)}
-            />
-          </Col>
-        </Row>
-        <br />
-        <Row className="justify-content-md-center">
-          <Col md="auto">
-            <Button variant="outline-success" type="submit">{isLoading && <Spinner
-              as="span"
-              animation="border"
-              size="sm"
-              role="status"
-              aria-hidden="true"
-            />}BOOK</Button>
-          </Col>
-        </Row>
-      </form>
-      <br />
-      <h2 style={{ textAlign: 'center' }}>Booked Dates</h2>
-      <hr />
+  return <Container className="Property">
+    <form className="booking_form" style={{ textAlign: 'center' }} onSubmit={handleSubmit}>
       <Row className="justify-content-md-center">
-        <Col md="auto">
-          <Table>
-            <thead>
-              <tr>
-                <th>Start Date</th>
-                <th>End Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {bookedDates.map((date, index) => {
-                if (date) {
-                  return <tr key={index}>
-                    <td>{date.startBookingDate}</td>
-                    <td>{date.endBookingDate}</td>
-                  </tr>
-                }
-              })}
-            </tbody>
-          </Table>
+        <Col xs={12}>
+          {!property && <Spinner
+            as="span"
+            animation="border"
+            size="sm"
+            role="status"
+            aria-hidden="true"
+          />}
+          {property && <Image style={{ width: '350px' }}
+            src={property.pictureUrl}
+            alt="First slide"
+            rounded
+          />}
+        </Col>
+        <Col sm={12}>
+          <h5>Title: {property.title}</h5>
+          <h5>City: {property.city}</h5>
+          <h5>Country: {property.country}</h5>
+          <h5>Price: {property.price}</h5>
+        </Col>
+        <Col sm={12}>
+          <DatePicker
+            selected={startDate}
+            onChange={date => setStartDate(date)}
+          />
+          <DatePicker
+            selected={endDate}
+            onChange={date => setEndDate(date)}
+          />
         </Col>
       </Row>
-    </Container>
-  );
+      <br />
+      <Row className="justify-content-md-center">
+        <Col md="auto">
+          <Button variant="outline-success" type="submit">{isLoading && <Spinner
+            as="span"
+            animation="border"
+            size="sm"
+            role="status"
+            aria-hidden="true"
+          />}BOOK</Button>
+        </Col>
+      </Row>
+    </form>
+    <br />
+    <h2 style={{ textAlign: 'center' }}>Booked Dates</h2>
+    <hr />
+    <Row className="justify-content-md-center">
+      <Col md="auto">
+        <Table>
+          <thead>
+            <tr>
+              <th>Start Date</th>
+              <th>End Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {bookedDates.map((date, index) => {
+              if (date) {
+                return <tr key={index}>
+                  <td>{date.startBookingDate}</td>
+                  <td>{date.endBookingDate}</td>
+                </tr>
+              }
+            })}
+          </tbody>
+        </Table>
+      </Col>
+    </Row>
+  </Container>
+
 }
