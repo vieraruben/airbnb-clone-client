@@ -50,7 +50,7 @@ export default function Property() {
     async function onLoad() {
       try {
         const poperty = await loadProperty(id);
-        const bookedDates = await loadBookedDates();
+        const bookedDates = await loadBookedDates(id);
         setProperty(poperty.body)
         setBookedDates(bookedDates.body)
       } catch (e) {
@@ -76,7 +76,7 @@ export default function Property() {
         propertyId: property.propertyId,
         propertyTitle: property.title
       })
-      const bookedDates = await loadBookedDates();
+      const bookedDates = await loadBookedDates(id);
       setBookedDates(bookedDates.body)
       setIsLoading(false)
     } catch (e) {
